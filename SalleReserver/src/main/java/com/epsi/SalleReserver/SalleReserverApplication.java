@@ -1,27 +1,31 @@
 package com.epsi.SalleReserver;
 
+import com.epsi.SalleReserver.Entity.Reservation;
+import com.epsi.SalleReserver.Entity.Room;
+import com.epsi.SalleReserver.Entity.User;
+import com.epsi.SalleReserver.Repository.ReservationRepository;
+import com.epsi.SalleReserver.Repository.RoomRepository;
 import com.epsi.SalleReserver.Repository.UserRepository;
+import com.github.javafaker.Faker;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 @SpringBootApplication
 public class SalleReserverApplication {
 
-}
-	@Autowired
-	UserRepository userRepository;
-
 	public static void main(String[] args) {SpringApplication.run(SalleReserverApplication.class, args);}
 
-	@PostConstruct
-	public void init() {
-	}
-
 	@Bean
-	 CommandLineRunner initDatabase(RoomRepository roomRepository, UserRepository userRepository, ReservationRepository reservationRepository) {
+	CommandLineRunner initDatabase(RoomRepository roomRepository, UserRepository userRepository, ReservationRepository reservationRepository) {
 
 		return args -> {
 			Faker faker = new Faker();
