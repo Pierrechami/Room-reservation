@@ -17,13 +17,13 @@ public class RoomController {
     @Autowired
     private RoomRepository roomRepository;
 
-    @GetMapping("/")
+    @GetMapping("site/salles/")
     public ResponseEntity<List<Room>> getAllRooms() {
         List<Room> rooms = roomRepository.findAll();
         return new ResponseEntity<>(rooms, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("site/salles/{id}")
     public ResponseEntity<Room> getRoomById(@PathVariable Long id) {
         Optional<Room> room = roomRepository.findById(id);
         if (room.isPresent()) {
@@ -39,7 +39,7 @@ public class RoomController {
         return new ResponseEntity<>(savedRoom, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("admin/site/salles/{id}")
     public ResponseEntity<Room> updateRoom(@PathVariable Long id, @RequestBody Room room) {
         Optional<Room> existingRoom = roomRepository.findById(id);
         if (existingRoom.isPresent()) {
@@ -55,7 +55,7 @@ public class RoomController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("admin/site/salles/{id}")
     public ResponseEntity<HttpStatus> deleteRoom(@PathVariable Long id) {
         Optional<Room> room = roomRepository.findById(id);
         if (room.isPresent()) {
