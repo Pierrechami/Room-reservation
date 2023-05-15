@@ -1,5 +1,7 @@
 package com.epsi.SalleReserver.Controller;
 
+import com.epsi.SalleReserver.Entity.Reservation;
+import com.epsi.SalleReserver.Repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
