@@ -1,11 +1,23 @@
-package com.epsi.SalleReserver;
+package com.epsi.SalleReserver.Entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Set;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "reservation")
 public class Reservation {
 
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_reservation")
@@ -16,11 +28,11 @@ public class Reservation {
             name = "reservation_utilisateur",
             joinColumns = @JoinColumn(name = "Id_reservation"),
             inverseJoinColumns = @JoinColumn(name = "Id_user"))
-    private Set<Utilisateur> utilisateurs;
+    private Set<User> utilisateurs;
 
     @ManyToOne
-    @JoinColumn(name="Id_salle")
-    private Salle salle;
+    @JoinColumn(name="Id_room")
+    private Room room;
 
     @Column(name = "date_reservation")
     private Date dateReservation;
@@ -39,20 +51,20 @@ public class Reservation {
         this.id = id;
     }
 
-    public Set<Utilisateur> getUtilisateurs() {
+    public Set<User> getUtilisateurs() {
         return utilisateurs;
     }
 
-    public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+    public void setUtilisateurs(Set<User> utilisateurs) {
         this.utilisateurs = utilisateurs;
     }
 
-    public Salle getSalle() {
-        return salle;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setSalle(Salle salle) {
-        this.salle = salle;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     public Date getDateReservation() {
