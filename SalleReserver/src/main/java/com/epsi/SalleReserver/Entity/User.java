@@ -17,7 +17,7 @@ import org.springframework.data.annotation.Id;
 public class User {
 
     @jakarta.persistence.Id
-    @Id
+    @Column(name = "Id_user")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
